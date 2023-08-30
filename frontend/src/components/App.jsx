@@ -36,13 +36,6 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   api
-  //     .getWebInfo()
-  //     .then((info) => setCurrentUser(info))
-  //     .catch(console.error);
-  // }, [loggedIn]);
-
   useEffect(() => {
     handleTokenCheck();
   }, [email]);

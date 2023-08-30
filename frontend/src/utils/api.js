@@ -91,7 +91,6 @@ class Api {
 
 // Объект настроек для класса Api
 const config = {
-  // url: "https://mesto.nomoreparties.co/v1/cohort-66",
   url: "http://localhost:3000"
 };
 
