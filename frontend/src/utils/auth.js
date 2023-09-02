@@ -54,7 +54,7 @@ class Authorization {
 }
 
 const config = {
-  baseUrl: "http://api.mestomesto.nomoredomainsicu.ru",
+  baseUrl: "https://api.mestomesto.nomoredomainsicu.ru",
 };
 
 const auth = new Authorization(config);

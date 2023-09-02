@@ -91,7 +91,7 @@ class Api {
 
 // Объект настроек для класса Api
 const config = {
-  url: "http://api.mestomesto.nomoredomainsicu.ru"
+  url: "https://api.mestomesto.nomoredomainsicu.ru"
 };
 
 const getToken = () => `Bearer ${localStorage.getItem("token")}`;
