@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config();
 const { errors } = require('celebrate');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -46,6 +48,6 @@ app.use((err, _, res, __) => {
 });
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Server is listening on port ${PORT}`);
+  console.log(`NODE_ENV = ${process.env.NODE_ENV}`);
 });

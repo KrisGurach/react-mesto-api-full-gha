@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
 const { secretKey, createSuccessStatusCode } = require('../helpers/constantsHelpers');
 const ValidationError = require('../helpers/errors/validationError');
@@ -111,7 +112,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        secretKey,
+        NODE_ENV === 'production' ? JWT_SECRET : secretKey,
         { expiresIn: '7d' },
       );
       res.send({ token });

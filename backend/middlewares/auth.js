@@ -6,6 +6,8 @@ const { notAuthorizedErrorMessage } = require('../helpers/errors/errorHelpers');
 const { secretKey } = require('../helpers/constantsHelpers');
 const NotAuthorizedError = require('../helpers/errors/authorizationError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports = (req, _, next) => {
   const { authorization } = req.headers;
 
@@ -16,8 +18,10 @@ module.exports = (req, _, next) => {
   const token = authorization.replace('Bearer ', '');
   let payload;
 
+  const key = NODE_ENV === 'production' ? JWT_SECRET : secretKey;
+
   try {
-    payload = jwt.verify(token, secretKey);
+    payload = jwt.verify(token, key);
   } catch (err) {
     throw new NotAuthorizedError(notAuthorizedErrorMessage);
   }
