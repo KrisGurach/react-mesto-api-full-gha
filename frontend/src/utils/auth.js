@@ -54,7 +54,7 @@ class Authorization {
 }
 
 const config = {
-  baseUrl: "http://localhost:3000",
+  baseUrl: "http://api.mestomesto.nomoredomainsicu.ru",
 };
 
 const auth = new Authorization(config);
