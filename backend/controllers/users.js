@@ -52,10 +52,6 @@ const createUser = (req, res, next) => {
 
   const validationErrorMessage = 'Переданы некорректные данные при создании пользователя.';
 
-  if (!password) {
-    throw new ValidationError(validationErrorMessage);
-  }
-
   bcrypt
     .hash(password, 10)
     .then((hash) => User.create({

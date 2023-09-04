@@ -19,7 +19,7 @@ const deleteCardById = (req, res, next) => {
     .orFail()
     .then((card) => {
       if (card.owner.toString() !== req.user._id) {
-        throw new mongoose.Error.ValidationError();
+        throw new ForbiddenError('Можно удалять только собственные карточки.');
       }
 
       Card.deleteOne(card)
@@ -28,9 +28,7 @@ const deleteCardById = (req, res, next) => {
         .catch(next);
     })
     .catch((e) => {
-      if (e instanceof mongoose.Error.ValidationError) {
-        next(new ForbiddenError('Можно удалять только собственные карточки.'));
-      } else if (e instanceof mongoose.Error.CastError) {
+      if (e instanceof mongoose.Error.CastError) {
         next(new ValidationError('Переданы некорректные данные при удалении карточки.'));
       } else if (e instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError(`Карточка с указанным id = ${id} не найдена.`));
