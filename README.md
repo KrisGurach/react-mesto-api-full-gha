@@ -16,3 +16,9 @@ IP 158.160.40.174
 Frontend https://mestomesto.nomoredomainsicu.ru
 
 Backend https://api.mestomesto.nomoredomainsicu.ru
+
+Инструкция по запуску:
+1. Клонировать репозиторий
+2. Находясь соответственно в папках frontend и backend:
+   - Выполнить установку зависимостей посредством команды "npm i"
+   - Запустить командой "npm run start"
